@@ -35,6 +35,21 @@ export const userData = {
     }
     console.log(this._cartListData);
     setLocalStorage(`cartIkea`, this._cartListData);
-
   },
+
+  set changeCountCartList(itemCart) {
+    let obj = this._cartListData.find((it) => it.id === itemCart.id);
+    obj.count = itemCart.count;
+    setLocalStorage(`cartIkea`, this._cartListData);
+  },
+
+  set delItemCart(id) {
+    let idx = this._cartListData.findIndex((it) => it.id === id);
+    console.log('idx: ', idx);
+    this._cartListData.splice(idx, 1);
+    setLocalStorage(`cartIkea`, this._cartListData);
+
+
+  }
+  
 };
